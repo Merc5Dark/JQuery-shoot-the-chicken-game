@@ -1,14 +1,3 @@
-/**
-* jQuery.timers - Timer abstractions for jQuery
-* Written by Blair Mitchelmore (blair DOT mitchelmore AT gmail DOT com)
-* Licensed under the WTFPL (http://sam.zoy.org/wtfpl/).
-* Date: 2009/02/08
-*
-* @author Blair Mitchelmore
-* @version 1.1.2
-*
-**/
-
 jQuery.fn.extend({
     everyTime: function(interval, label, fn, times, belay) {
         return this.each(function() {
@@ -48,7 +37,7 @@ jQuery.extend({
         timeParse: function(value) {
             if (value == undefined || value == null)
                 return null;
-            var result = this.regex.exec(jQuery.trim(value.toString()));
+            let result = this.regex.exec(jQuery.trim(value.toString()));
             if (result[2]) {
                 var num = parseFloat(result[1]);
                 var mult = this.powers[result[2]] || 1;
@@ -58,7 +47,7 @@ jQuery.extend({
             }
         },
         add: function(element, interval, label, fn, times, belay) {
-            var counter = 0;
+            let counter = 0;
 
             if (jQuery.isFunction(label)) {
                 if (!times)
@@ -80,14 +69,14 @@ jQuery.extend({
             times = times || 0;
             belay = belay || false;
 
-            var timers = jQuery.data(element, this.dataKey) || jQuery.data(element, this.dataKey, {});
+            let timers = jQuery.data(element, this.dataKey) || jQuery.data(element, this.dataKey, {});
 
             if (!timers[label])
                 timers[label] = {};
 
             fn.timerID = fn.timerID || this.guid++;
 
-            var handler = function() {
+            let handler = function() {
                 if (belay && this.inProgress)
                     return;
                 this.inProgress = true;
@@ -105,7 +94,7 @@ jQuery.extend({
 
         },
         remove: function(element, label, fn) {
-            var timers = jQuery.data(element, this.dataKey), ret;
+            let timers = jQuery.data(element, this.dataKey), ret;
 
             if (timers) {
 
@@ -119,7 +108,7 @@ jQuery.extend({
                             delete timers[label][fn.timerID];
                         }
                     } else {
-                        for (var fn in timers[label]) {
+                        for (let fn in timers[label]) {
                             window.clearInterval(timers[label][fn]);
                             delete timers[label][fn];
                         }

@@ -1,22 +1,22 @@
 $(document).ready(function(){
 	/* speed initialization */
-	var speed = 400;
+	let speed = 400;
 	
 	/* level initialization */
-	var level = 1;
+	let level = 1;
 	
 	/* points initialization */
-	var points = 0;
+	let points = 0;
 	
 	/* check_chicken_creation initialization */
-	var check_chicken_creation = 0;
+	let check_chicken_creation = 0;
 	
 	/* how often chickens are created */
-	var generated_how_often = 3;
+	let generated_how_often = 3;
 	
 	/* function - if increase speed */
 	function generating_how_often() {
-		var ret = Math.ceil(Math.random() * 3);
+		let ret = Math.ceil(Math.random() * 3);
 		generated_how_often = ret;
 	}
 	
@@ -39,8 +39,8 @@ $(document).ready(function(){
 	/* function - for reset chickens at the begining */
 	function reset_chickens() {
 		for (i=1; i<=20; i++) {
-			var x = 0;
-			var y = 0;
+			let x = 0;
+			let y = 0;
 			$('#chicken-'+i).css('left', x);
 			$('#chicken-'+i).css('top', y);
 			$('#chicken-'+i).css('display', 'none');
@@ -72,7 +72,7 @@ $(document).ready(function(){
 	function move_chickens() {
 		for (i=1; i<=20; i++) {
 			if ('block' == $('#chicken-'+i).css('display')) {
-				var before_y = $('#chicken-'+i).css('top');
+				let before_y = $('#chicken-'+i).css('top');
 				before_y = parseInt(before_y) + 15;
 				if (435 <= before_y) {
 					game_over();
@@ -89,9 +89,9 @@ $(document).ready(function(){
 	function generate_chicken() {
 		for (i=1; i<=20; i++) {
 			if ('none' == $('#chicken-'+i).css('display')) {
-				var rand_no_x = Math.random();
-				var x = (30 * Math.ceil(rand_no_x * 14));
-				var y = 0;
+				let rand_no_x = Math.random();
+				let x = (30 * Math.ceil(rand_no_x * 14));
+				let y = 0;
 				$('#chicken-'+i).css('left', x);
 				$('#chicken-'+i).css('top', y);
 				$('#chicken-'+i).css('display', 'block');
